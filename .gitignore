@@ -1,0 +1,8 @@
+# course material
+material/*
+
+# misc
+.idea/*
+.DS_Store
+*.ipynb
+.ipynb_checkpoints/*
