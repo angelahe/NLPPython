@@ -36,3 +36,35 @@ for author, topic, pages in library:
 today = datetime(year=2019, month=2, day=28)
 print(f"{today}")
 print(f"{today:%B %d, %Y}")
+
+# read from a file, default is read only
+myfile = open('test.txt')
+myfile.read()
+myfile.seek(0)
+content = myfile.read()
+print(content)
+myfile.close()
+
+# iterate lines
+myfile = open('test.txt')
+mylines = myfile.readlines()
+print('\nanother way to print the lines in a file\n')
+for line in mylines:
+    print(line)
+
+myfile.close()
+
+# write to a file, performs a truncation on the original, only use when intend to completely overwrite the file
+# myfile = open('test.txt', 'w+')
+# myfile.write('My brand new text')
+myfile.close()
+
+myfile = open('test.txt', 'a+')
+myfile.write('\nadding a third line')
+
+myfile.close()
+
+# better to use context manager to autoclose the file
+with open('test.txt', 'r') as mynewfile:
+    myvariable = mynewfile.readlines()
+    for line in myvariable
