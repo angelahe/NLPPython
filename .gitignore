@@ -8,3 +8,4 @@ material/*
 .ipynb_checkpoints/*
 *.pdf
 *.txt
+Data*/*
