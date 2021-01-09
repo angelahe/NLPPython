@@ -1,4 +1,4 @@
-# simple data wrangling techniques
+# simple data wrangling techniques - lists
 
 list_example = [51, 27, 34, 46, 90, 45, -19]
 
