@@ -75,3 +75,26 @@ print(f'using reverse (reverse the reverse): \n{list_d}')
 import random
 list_e = [random.randint(0, 30) for x in range (0, 100)]
 print(f'100 random integers between 0 and 29:\n{list_e}')
+
+# activity 1 - handling lists
+# generate a list of random numbers, then generate list from the first
+# which only contains numbers divisible by 3
+# repeat this 3 times then calculate the average difference in the
+# length of the lists
+
+NUMBER_OF_EXPERIMENTS = 10
+difference_list = []
+for i in range(0, NUMBER_OF_EXPERIMENTS):
+    list_f = [random.randint(0, 100) for x in range (0, 100)]
+    print(f'random list of ints:\n{list_f}')
+    list_g = [x for x in list_f if x%3 == 0]
+    print(f'divisible by 3:\n{list_g}')
+    number_div_by_3 = len(list_g)
+    difference = len(list_f) - len(list_g)
+    print(f'not have div by 3 number: {difference}')
+    difference_list.append(difference)
+
+print(f'difference list: {difference_list}')
+
+avg_diff = sum(difference_list) / float(len(difference_list))
+print(f'arithmetic mean or common average: {avg_diff}')
