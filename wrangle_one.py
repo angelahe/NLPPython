@@ -48,3 +48,17 @@ print(f'add two lists together:\n{list_a} + {list_b} = {list_c}')
 
 list_a.extend(list_b)
 print(f'append 2nd list to 1st list using extend:\n{list_a}')
+
+# ex 3 iterate over a list to check membership
+
+list_d = [x for x in range(0, 100)]
+for i in range(0, len(list_d)):
+    print(list_d[i])
+
+# better iteration over list
+for i in list_d:
+    print(i)
+
+# check for membership in a list:
+print(f'25 in list? {25 in list_d}')
+print(f'-45 in list_d? {-45 in list_d}')
