@@ -71,3 +71,7 @@ print(f'reversed list using sort:{list_d}')
 list_d.reverse()
 print(f'using reverse (reverse the reverse): \n{list_d}')
 
+# ex 5 generate a random list
+import random
+list_e = [random.randint(0, 30) for x in range (0, 100)]
+print(f'100 random integers between 0 and 29:\n{list_e}')
