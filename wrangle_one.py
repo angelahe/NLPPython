@@ -62,3 +62,12 @@ for i in list_d:
 # check for membership in a list:
 print(f'25 in list? {25 in list_d}')
 print(f'-45 in list_d? {-45 in list_d}')
+
+# ex 4 sort a list
+# sort a list in reverse order
+list_d.sort(reverse=True)
+print(f'reversed list using sort:{list_d}')
+
+list_d.reverse()
+print(f'using reverse (reverse the reverse): \n{list_d}')
+
