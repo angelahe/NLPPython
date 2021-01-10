@@ -40,3 +40,9 @@ dict_2["key2"] = "My new value"
 dict_3 = {}
 dict_3["key1"] = "value1"
 print(f'new dictionary: {dict_3}')
+
+# ex 7 iterating over a dictionary
+dict_4 = {"key1": 1, "key2": ["list_element1", 34], "key3": "value3", "key4": {"subkey1": "v1"}, "key5": 4.5}
+for k, v in dict_4.items():
+    print("{} - {}".format(k, v))
+
