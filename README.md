@@ -11,6 +11,7 @@ jupyter notebook
 ## installing libraries
 conda install -c conda-forge spacy
 python -m spacy download en
+python -m spacy download es_core_news_sm
 
 ## specific to jupyter
 shift + enter to end the line

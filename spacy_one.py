@@ -2,6 +2,7 @@ import spacy
 
 # load language library
 nlp = spacy.load('en_core_web_sm')
+nlp_es = spacy.load('es_core_news_sm')
 
 # create document object
 # u = unicode
@@ -24,3 +25,9 @@ for token in doc2:
 # can use indexing to get tokens (text by default)
 print(f'first token is: {doc2[0]}')
 print(f'part of speech: {doc2[0].pos_}')
+
+# try to open up spanish and tokenize it :D
+nlp_es = spacy.load("es_core_news_sm")
+doc3 = nlp_es(u"Mi abuela no está en casa")
+for token in doc3:
+    print(token.text, token.pos, token.pos_, token.dep_)
