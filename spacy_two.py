@@ -35,5 +35,15 @@ doc5 = nlp(u"It is better to give than receive.")
 print(f'first token in {doc5} is {doc5[0]}')
 print(f'tokens 3 to 5: {doc5[2:5]}')
 
+doc6 = nlp(u'Apple to build a Hong Kong factor for $6 million')
+for token in doc6:
+    print(token.text, end=' | ')
+
+# print named entities e.g. organization
+for entity in doc6.ents:
+    print(entity)
+    print(entity.label_)
+    print(str(spacy.explain(entity.label_)))
+    print('\n')
 
 
