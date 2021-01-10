@@ -8,6 +8,10 @@ conda deactivate nlp_course
 
 jupyter notebook
 
+## installing libraries
+conda install -c conda-forge spacy
+python -m spacy download en
+
 ## specific to jupyter
 shift + enter to end the line
 %%writefile test.txt
@@ -25,3 +29,9 @@ see strftime.org for datetime formats
 
 ## working with pdfs
 PyPDF2 library
+
+## additional reading
+https://spacy.io/api/annotation#pos-tagging
+https://spacy.io/api/annotation#dependency-parsing
+languages supported i could see:
+english, german, spanish, portuguese, french, italian, dutch
