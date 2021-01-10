@@ -46,3 +46,9 @@ dict_4 = {"key1": 1, "key2": ["list_element1", 34], "key3": "value3", "key4": {"
 for k, v in dict_4.items():
     print("{} - {}".format(k, v))
 
+# ex 8
+list_a = [random.randint(0, 30) for x in range (0, 100)]
+# create a unique valued list from list_a
+#  fromkeys and keys.fromkeys creates a dict where the keys come from the iterable
+unique_list = list(dict.fromkeys(list_a).keys())
+print(f'unique values from the random list: {unique_list}')
