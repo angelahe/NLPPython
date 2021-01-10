@@ -13,6 +13,8 @@ conda install -c conda-forge spacy
 python -m spacy download en
 python -m spacy download es_core_news_sm
 
+can load en_core_web_lg for a larger corpus
+
 ## specific to jupyter
 shift + enter to end the line
 %%writefile test.txt
