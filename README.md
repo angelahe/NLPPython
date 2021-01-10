@@ -36,3 +36,15 @@ https://spacy.io/api/annotation#pos-tagging
 https://spacy.io/api/annotation#dependency-parsing
 languages supported i could see:
 english, german, spanish, portuguese, french, italian, dutch
+https://spacy.io/api/annotation#dependency-parsing
+
+tag:
+.text - original word text
+.lemma_ - base form of the word
+.pos_ - part of speed tag
+.tag_ detailed part of speech tag
+.shape_ word shape with capitalization, puctuation, digits
+.is_alpha - is the token an alpha character
+.is_stop - is the token part of a stop list ie the most common words of the language
+
+use span (slice of a doc object)
