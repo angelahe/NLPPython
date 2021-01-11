@@ -46,4 +46,9 @@ for entity in doc6.ents:
     print(str(spacy.explain(entity.label_)))
     print('\n')
 
+#noun chunks
+doc7 = nlp(u'Autonomous cars shift insurance liability toward manufacturers.')
+print(f'sentence: {doc7}')
+for chunk in doc7.noun_chunks:
+    print(chunk)
 
