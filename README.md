@@ -39,7 +39,9 @@ https://spacy.io/api/annotation#dependency-parsing
 languages supported i could see:
 english, german, spanish, portuguese, french, italian, dutch
 https://spacy.io/api/annotation#dependency-parsing
-
+https://spacy.io/usage/visualizers
+https://spacy.io/api/top-level#displacy.options
+## notes
 tag:
 .text - original word text
 .lemma_ - base form of the word

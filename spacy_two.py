@@ -52,3 +52,16 @@ print(f'sentence: {doc7}')
 for chunk in doc7.noun_chunks:
     print(chunk)
 
+from spacy import displacy
+#built in visualizer
+# from command line will popup dialog, say allow access, then
+# open new tab in browser 127.0.0.1:5000
+# ctrl C between visualizations
+
+doc = nlp(u"Apple is going to build a U.K. factory for $6 million.")
+
+displacy.serve(doc, style='dep', options={'distance':110})
+
+doc2 = nlp(u"Over the last quarter Apple sold nearly 20 thousand iPods for a profit of $6 million.")
+
+displacy.serve(doc2, style='ent')
