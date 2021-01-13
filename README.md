@@ -41,6 +41,7 @@ english, german, spanish, portuguese, french, italian, dutch
 https://spacy.io/api/annotation#dependency-parsing
 https://spacy.io/usage/visualizers
 https://spacy.io/api/top-level#displacy.options
+
 ## notes
 tag:
 .text - original word text
@@ -52,3 +53,20 @@ tag:
 .is_stop - is the token part of a stop list ie the most common words of the language
 
 use span (slice of a doc object)
+
+OP key:
+\! negate the pattern, require it to match 0 times
+? make the pattern optional
+\+ require pattern to match 1 or more times
+\* allow pattern to match 0 or more times
+
+other token attributes
+'ORTH' exact verbatim text of token
+'LOWER' lowercase form of token text
+'LENGTH' length of token text
+'IS_ALPHA', 'IS_ASCII', 'IS_DIGIT'
+'IS_LOWER', 'IS_UPPER', 'IS_TITLE'
+'IS_PUNCT', 'IS_SPACE', 'IS_STOP'
+'LIKE_NUM', 'LIKE_URL', 'LIKE_EMAIL'
+'POS', 'TAG', 'DEP', 'LEMMA', 'SHAPE'   tokens simple and extended part of speech tag, dependency label, lemma, shape
+'ENT_TYPE' token entity label
