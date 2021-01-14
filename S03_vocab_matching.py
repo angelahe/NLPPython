@@ -35,12 +35,13 @@ pattern4 = [{'LOWER':'solarpower'}]
 #allow pattern to match 0 or more times solar*power
 pattern5 = [{'LOWER':'solar'},{'IS_PUNCT':True}, {'OP':'*'}, {'LOWER':'power'}]
 
-matcher.add('SolarPower', None, pattern4, pattern5)
+matcher.add('SolarPower2', None, pattern4, pattern5)
 
 
 doc2 = nlp(u"Solar--Power is solarpower. The Solar Power industry continues to grow a solarpower increases. Solar-power is awesome.")
 found_matches2 = matcher(doc2)
 print(found_matches2)
+
 
 #now phrase matching
 from spacy.matcher import PhraseMatcher
@@ -60,5 +61,11 @@ print(found_matches3)
 
 for match_id, start, end in found_matches3:
     string_id = nlp.vocab.strings[match_id]
-    span = doc[start:end]
+    span = doc3[start:end]
+    print(match_id, string_id, start, end, span.text)
+
+#add context 5 tokens before and after the match
+for match_id, start, end in found_matches3:
+    string_id = nlp.vocab.strings[match_id]
+    span = doc3[start-5:end+5]
     print(match_id, string_id, start, end, span.text)
