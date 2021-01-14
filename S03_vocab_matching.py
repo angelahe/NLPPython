@@ -25,3 +25,19 @@ for match_id, start, end in found_matches:
     string_id = nlp.vocab.strings[match_id]
     span = doc[start:end]
     print(match_id, string_id, start, end, span.text)
+
+# when done with a pattern can now remove the pattern
+
+matcher.remove('SolarPower')
+
+# will find solarpower, SolarPower
+pattern4 = [{'LOWER':'solarpower'}]
+#allow pattern to match 0 or more times solar*power
+pattern5 = [{'LOWER':'solar'},{'IS_PUNCT':True}, {'OP':'*'}, {'LOWER':'power'}]
+
+matcher.add('SolarPower', None, pattern4, pattern5)
+
+
+doc2 = nlp(u"Solar--Power is solarpower. The Solar Power industry continues to grow a solarpower increases. Solar-power is awesome.")
+found_matches2 = matcher(doc2)
+print(found_matches2)
