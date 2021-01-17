@@ -35,7 +35,46 @@ new_ent = Span(doc, 0, 1, label=ORG)
 doc3.ents = list(doc3.ents) + [new_ent]
 # or could use append
 
-
 print(f'entities for {doc3}')
 show_ents(doc3)
 
+# add multiple new entities
+
+doc = nlp(u"Our company created a brand new vacuum cleaner."
+          u"This new vacuum-cleaner is the best in show.")
+
+show_ents(doc)
+
+from spacy.matcher import PhraseMatcher
+# Import PhraseMatcher and create a matcher object:
+matcher = PhraseMatcher(nlp.vocab)
+# Create the desired phrase patterns:
+phrase_list = ['vacuum cleaner', 'vacuum-cleaner']
+phrase_patterns = [nlp(text) for text in phrase_list]
+
+# Apply the patterns to our matcher object:
+matcher.add('newproduct', None, *phrase_patterns)
+
+# Apply the matcher to our Doc object:
+found_matches = matcher(doc)
+
+print(f'these match the patterns {phrase_list} : \n {found_matches}')
+
+# Here we create Spans from each match, and create named entities from them:
+from spacy.tokens import Span
+
+PROD = doc.vocab.strings[u'PRODUCT']
+
+new_ents = [Span(doc, match[1],match[2],label=PROD) for match in found_matches]
+
+doc.ents = list(doc.ents) + new_ents
+
+show_ents(doc)
+
+doc = nlp(u'Originally priced at $29.50, the sweater was marked down to five dollars.')
+
+show_ents(doc)
+
+doc = nlp(u"Originally I paid $29.95 for this toy car, but now it is marked down by 10 dollars.")
+
+print(f'number of entities in sentence with money: {len([ent for ent in doc. ents if ent.label_ == "MONEY"])}')
