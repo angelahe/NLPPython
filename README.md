@@ -2,6 +2,7 @@
 
 ## environment
 conda env create -f nlp_course_env.yml
+conda env create -f nlp_course2_env.yml
 
 conda activate nlp_course
 conda deactivate nlp_course
@@ -12,6 +13,7 @@ jupyter notebook
 conda install -c conda-forge spacy
 python -m spacy download en
 python -m spacy download es_core_news_sm
+python -m spacy download en_core_web_sm
 
 can load en_core_web_lg for a larger corpus
 
