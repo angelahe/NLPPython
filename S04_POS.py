@@ -56,3 +56,25 @@ for k,v in sorted(TAG_counts.items()):
 DEP_counts = doc.count_by(spacy.attrs.DEP)
 for k,v in sorted(DEP_counts.items()):
     print(f'{k}. {doc.vocab[k].text:{4}}: {v}')
+
+# review of visualizing parts of speech
+from spacy import displacy
+#built in visualizer
+# from command line will popup dialog, say allow access, then
+# open new tab in browser 127.0.0.1:5000
+# ctrl C between visualizations
+doc = nlp(u"The quick brown fox jumped over the lazy dog's back.")
+displacy.serve(doc, style='dep', options={'distance':110})
+
+# create options dictionary
+options = {'distance':110, 'compact': 'True', 'color':'yellow', 'bg': '#09a3d5', 'font': 'Times'}
+# Ctrl+C and refresh browser to see the second display
+displacy.serve(doc, style='dep', options=options)
+
+# create several displays
+doc2 = nlp(u"This is a sentence. This is another, possibly longer sentence.")
+
+# Create spans from Doc.sents:
+spans = list(doc2.sents)
+
+displacy.serve(spans, style='dep', options={'distance': 110})
