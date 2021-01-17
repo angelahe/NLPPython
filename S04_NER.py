@@ -78,3 +78,24 @@ show_ents(doc)
 doc = nlp(u"Originally I paid $29.95 for this toy car, but now it is marked down by 10 dollars.")
 
 print(f'number of entities in sentence with money: {len([ent for ent in doc. ents if ent.label_ == "MONEY"])}')
+
+# visualizing NER
+from spacy import displacy
+
+doc4 = nlp(u"Over the last quarter Apple sold nearly 20 thousand ipods for a profit of $6 million."
+           u"By contrast, Sony only sold 8 thousand Walkman music players.")
+# if only want to display NER for product type
+#colors = {'ORG':'#aa9cfc'}
+#can apply radial gradient to colors
+colors = {'ORG':'radial-gradient(yellow, green)'}
+# can apply linear gradient to colors
+# colors = {'ORG':'linear-gradient(90deg, #aa9cfc, #fc9ce7)'}
+# top to bottom
+# colors = {'ORG':'linear-gradient(180deg, #aa9cfc, #fc9ce7)'}
+# one corner to another
+# colors = {'ORG':'linear-gradient(45deg, #aa9cfc, #fc9ce7)'}
+options = {'ents': ['PRODUCT', 'ORG'], 'colors':colors}
+displacy.serve(doc4, style='ent', options = options)
+
+for sent in doc4.sents:
+    displacy.serve(nlp(sent.text), style='ent')
