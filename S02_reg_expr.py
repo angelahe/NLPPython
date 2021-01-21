@@ -1,5 +1,4 @@
 # regular expressions part 1
-
 # pattern identifier
 # \d digits
 # \w alphanumeric
