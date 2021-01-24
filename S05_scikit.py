@@ -57,3 +57,39 @@ lr_model = LogisticRegression(solver='lbfgs')
 print(f'{lr_model.fit(X_train, y_train)}')
 
 # now the model is ready to predict
+from sklearn import metrics
+predictions = lr_model.predict(X_test)
+print(f'predictions: {predictions}')
+
+# not predicting well on spam
+print(metrics.confusion_matrix(y_test, predictions))
+
+# test the accuracy of the model
+df = pd.DataFrame(metrics.confusion_matrix(y_test,predictions), index=['ham','spam'], columns=['ham','spam'])
+# print confusion matrix
+#  true positive  | false positive
+#  false negative | true negative
+print(df)
+
+#print classification report for precision, recall and f1 score for each category
+print(metrics.classification_report(y_test, predictions))
+
+#overall accuracy
+print('overall accuracy')
+print(metrics.accuracy_score(y_test, predictions))
+
+# run using other algorithm - this one doesn't do well with spam at all
+from sklearn.naive_bayes import MultinomialNB
+
+nb_model = MultinomialNB()
+nb_model.fit(X_train, y_train)
+predictions = nb_model.predict(X_test)
+print(metrics.confusion_matrix(y_test, predictions))
+print(metrics.classification_report(y_test, predictions))
+
+from sklearn.svm import SVC
+svc_model = SVC()
+svc_model.fit(X_train, y_train)
+predictions = svc_model.predict(X_test)
+print(metrics.confusion_matrix(y_test, predictions))
+print(metrics.classification_report(y_test, predictions))
