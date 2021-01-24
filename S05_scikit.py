@@ -47,3 +47,13 @@ print(f'X_train is: {X_train.shape}')
 
 print(f'X_test is: {X_test.shape}')
 
+from sklearn.linear_model import LogisticRegression
+
+# create instance of regression model
+lr_model = LogisticRegression(solver='lbfgs')
+
+# fit the model to the training data
+# pass in training data and the labels
+print(f'{lr_model.fit(X_train, y_train)}')
+
+# now the model is ready to predict
