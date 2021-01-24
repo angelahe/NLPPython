@@ -16,10 +16,15 @@ with open('material/UPDATED_NLP_COURSE/Textfiles/peterrabbit.txt') as f:
         print(f"id:{k:{5}} {doc.vocab[k].text:{10}} {v:{5}} instances")
 
 # what percentage of tokens are nouns
+    noun_percent = POS_counts[91] / len(doc) * 100
+    print(f"percent of doc that are nouns: {noun_percent:.2f}")
 
 # display dependency parse
+    displacy.serve(list(doc.sents)[2], style='dep')
 
 # 1st 2 named entities
+    for entity in doc.ents[:2]:
+        print(f'{entity.text:{30}} {entity.label_:{15}} {str(spacy.explain(entity.label_))}')
 
 # How many sentences are contained in the Tale of Peter Rabbit
 
