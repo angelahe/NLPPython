@@ -2,12 +2,12 @@ import spacy
 nlp = spacy.load('en_core_web_sm')
 from spacy import displacy
 
-with open('..material/UPDATED_NLP_COURSE/Textfiles/peterrabbit.txt') as f:
+with open('material/UPDATED_NLP_COURSE/Textfiles/peterrabbit.txt') as f:
     doc = nlp(f.read())
 # for every token in the 3rd sentence print the token text, POS tag, fine grained tag,
     # and description of the fine-grained tag
     for token in list(doc.sents)[2]:
-        print(f"{token.text:{10}} {token.pos_:{10}} {token.tag:{10}} {str(spacy.explain(token.tag))}")
+        print(f"{token.text:{10}} {token.pos_:{10}} {token.tag_:{10}} {str(spacy.explain(token.tag_))}")
 
 
 # frequency list of POS tags
