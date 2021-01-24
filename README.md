@@ -15,6 +15,9 @@ python -m spacy download en
 python -m spacy download es_core_news_sm
 python -m spacy download en_core_web_sm
 
+conda install scikit-learn
+pip install scikit-learn
+
 can load en_core_web_lg for a larger corpus
 
 ## specific to jupyter

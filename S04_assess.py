@@ -35,3 +35,4 @@ sents_with_ners = [doc for doc in list_of_sents if doc.ents]
 print(f'number of sentences with named entities: {len(sents_with_ners)}')
 
 # display named entity visualization for list_of_sents
+displacy.serve(list_of_sents[0], style='ent')
