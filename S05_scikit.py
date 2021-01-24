@@ -32,3 +32,18 @@ plt.hist(df[df['label']=='ham']['punct'],bins=bins,alpha=0.8)
 plt.hist(df[df['label']=='spam']['punct'],bins=bins,alpha=0.8)
 plt.legend(('ham','spam'))
 plt.show()
+
+from sklearn.model_selection import train_test_split
+
+# X feature data
+X = df[['length', 'punct']]
+# y label
+y = df['label']
+# 30% test set, random_state for repeatable test
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3, random_state=42)
+
+#show rows and columns of the data
+print(f'X_train is: {X_train.shape}')
+
+print(f'X_test is: {X_test.shape}')
+
