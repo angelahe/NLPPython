@@ -27,7 +27,11 @@ with open('material/UPDATED_NLP_COURSE/Textfiles/peterrabbit.txt') as f:
         print(f'{entity.text:{30}} {entity.label_:{15}} {str(spacy.explain(entity.label_))}')
 
 # How many sentences are contained in the Tale of Peter Rabbit
+print(f'number of sentences: {len(list(doc.sents))}')
 
 # how many sentences contain named entities
+list_of_sents = [nlp(sent.text) for sent in doc.sents]
+sents_with_ners = [doc for doc in list_of_sents if doc.ents]
+print(f'number of sentences with named entities: {len(sents_with_ners)}')
 
 # display named entity visualization for list_of_sents
