@@ -9,8 +9,11 @@ with open('material/UPDATED_NLP_COURSE/Textfiles/peterrabbit.txt') as f:
     for token in list(doc.sents)[2]:
         print(f"{token.text:{10}} {token.pos_:{10}} {token.tag_:{10}} {str(spacy.explain(token.tag_))}")
 
-
 # frequency list of POS tags
+    POS_counts = doc.count_by(spacy.attrs.POS)
+
+    for k,v in sorted(POS_counts.items()):
+        print(f"id:{k:{5}} {doc.vocab[k].text:{10}} {v:{5}} instances")
 
 # what percentage of tokens are nouns
 
