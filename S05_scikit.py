@@ -81,6 +81,7 @@ print(metrics.accuracy_score(y_test, predictions))
 # run using other algorithm - this one doesn't do well with spam at all
 from sklearn.naive_bayes import MultinomialNB
 
+# these five steps are the pattern regardless of the algorithm
 nb_model = MultinomialNB()
 nb_model.fit(X_train, y_train)
 predictions = nb_model.predict(X_test)
@@ -88,6 +89,7 @@ print(metrics.confusion_matrix(y_test, predictions))
 print(metrics.classification_report(y_test, predictions))
 
 from sklearn.svm import SVC
+
 svc_model = SVC()
 svc_model.fit(X_train, y_train)
 predictions = svc_model.predict(X_test)
