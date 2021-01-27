@@ -15,6 +15,9 @@ python -m spacy download en
 python -m spacy download es_core_news_sm
 python -m spacy download en_core_web_sm
 
+python -m spacy download en_core_web_md
+python -m spacy download en_core_web_lg
+
 conda install scikit-learn
 pip install scikit-learn
 
@@ -46,6 +49,7 @@ english, german, spanish, portuguese, french, italian, dutch
 https://spacy.io/api/annotation#dependency-parsing
 https://spacy.io/usage/visualizers
 https://spacy.io/api/top-level#displacy.options
+https://spacy.io/usage/models
 
 ## notes
 tag:
