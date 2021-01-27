@@ -83,5 +83,8 @@ print(metrics.classification_report(y_test,predictions))
 print(f'overall accuracy: {metrics.accuracy_score(y_test,predictions)}')
 
 # make new prediction
-print('new prediction:')
+print('new prediction for legit message:')
 print(text_clf.predict(["Hi how are you doing today?"]))
+
+print('new prediction for spam message:')
+print(text_clf.predict(["Congratulations! you've been selected as a winner. text won to 44255. congratulations free entry to contest"]))
