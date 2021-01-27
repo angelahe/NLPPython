@@ -52,5 +52,8 @@ for word in y:
 
 print(f'frequency list 2: {two}')
 
+
+
+
 print(one)
 print(two)
