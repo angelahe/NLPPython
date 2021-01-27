@@ -67,4 +67,16 @@ print(metrics.confusion_matrix(y_test,predictions))
 # Print a classification report
 print(metrics.classification_report(y_test,predictions))
 # Print the overall accuracy
-print(f'overall accuracy: {metrics.accuracy_score(y_test,predictions)}')
+print(f'overall accuracy naive Bayes: {metrics.accuracy_score(y_test,predictions)}')
+
+# now try Linear SVC
+text_clf_lsvc.fit(X_train, y_train)
+# Form a prediction set
+predictions = text_clf_lsvc.predict(X_test)
+# Report the confusion matrix
+from sklearn import metrics
+print(metrics.confusion_matrix(y_test,predictions))
+# Print a classification report
+print(metrics.classification_report(y_test,predictions))
+# Print the overall accuracy
+print(f'overall accuracy Linear SVC: {metrics.accuracy_score(y_test,predictions)}')
