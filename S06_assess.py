@@ -49,3 +49,32 @@ def vector_math(a,b,c):
 print('mother - woman + man = father')
 vector_result = vector_math('mother','woman','man')
 print(vector_result)
+
+print('wolf - dog + cat = wildcat')
+vector_result = vector_math('wolf', 'dog', 'cat')
+print(vector_result)
+
+# Perform VADER Sentiment on own Review
+
+# Import SentimentIntensityAnalyzer and create an sid object
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+sid = SentimentIntensityAnalyzer()
+
+# Write a review as one continuous string (multiple sentences are ok)
+review = "This movie made me feel like I was there, with that life, with those limitations, and with that alternate reality like I've never experienced before.  Excellent."
+
+# Obtain the sid scores for your review
+print(sid.polarity_scores(review))
+
+def review_rating(string):
+    scores = sid.polarity_scores(string)
+    if scores['compound'] == 0:
+        return 'Neutral'
+    elif scores['compound'] > 0:
+        return 'Positive'
+    else:
+        return 'Negative'
+
+# Test the function on your review above:
+print(review_rating(review))
