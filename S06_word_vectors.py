@@ -44,3 +44,27 @@ template = "{0:8}{1:12}{2:20}{3:12}"
 print(template.format("Text", "Has Vector", "Norm", "Not in Vocab"))
 for token in tokens:
     print(template.format(token.text, token.has_vector, token.vector_norm, token.is_oov))
+
+from scipy import spatial
+
+cosine_similarity = lambda vec1, vec2: 1 - spatial.distance.cosine(vec1, vec2)
+king = nlp.vocab['king'].vector
+man = nlp.vocab['man'].vector
+woman = nlp.vocab['woman'].vector
+
+# Now we find the closest vector in the vocabulary to the result of "man" - "woman" + "queen"
+new_vector = king - man + woman
+computed_similarities = []
+
+for word in nlp.vocab:
+    # Ignore words without vectors and mixed-case words:
+    if word.has_vector:
+        if word.is_lower:
+            if word.is_alpha:
+                similarity = cosine_similarity(new_vector, word.vector)
+                computed_similarities.append((word, similarity))
+
+# sort by most similar
+computed_similarities = sorted(computed_similarities, key=lambda item: -item[1])
+
+print([w[0].text for w in computed_similarities[:10]])
