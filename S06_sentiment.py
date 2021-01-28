@@ -21,3 +21,20 @@ print(f'polarity scores: {sid.polarity_scores(b)}')
 c = 'This was the WORST movie tht is ever disgraced the screen.'
 print(c)
 print(f'polarity scores: {sid.polarity_scores(c)}')
+
+import pandas as pd
+
+df = pd.read_csv('material/UPDATED_NLP_COURSE/TextFiles/amazonreviews.tsv',sep='\t')
+print(df.head())
+df['label'].value_counts()
+
+# clean the data a little
+blanks = []
+df.dropna(inplace=True)
+for i, label, review in df.itertuples():
+    if type(review) == str:
+        if review.isspace():
+            blanks.append(i)
+
+df.drop(blanks,inplace=True)
+
