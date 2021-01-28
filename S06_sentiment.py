@@ -38,3 +38,28 @@ for i, label, review in df.itertuples():
 
 df.drop(blanks,inplace=True)
 
+print(df.iloc[0]['review'])
+
+print(sid.polarity_scores(df.loc[0]['review']))
+
+# adding scores and labels to the dataframe
+df['scores'] = df['review'].apply(lambda review: sid.polarity_scores(review))
+
+print(df.head())
+
+df['compound']  = df['scores'].apply(lambda score_dict: score_dict['compound'])
+
+print(df.head())
+
+df['comp_score'] = df['compound'].apply(lambda score: 'pos' if score >=0 else 'neg')
+
+print(df.head())
+
+# compare label with the computed compound score
+from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
+
+print(f"accuracy score: {accuracy_score(df['label'],df['comp_score'])}")
+
+print(classification_report(df['label'],df['comp_score']))
+
+print(confusion_matrix(df['label'],df['comp_score']))
