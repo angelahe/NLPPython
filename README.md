@@ -23,6 +23,8 @@ pip install scikit-learn
 
 can load en_core_web_lg for a larger corpus
 
+conda install nltk[twitter]
+
 ## specific to jupyter
 shift + enter to end the line
 %%writefile test.txt
