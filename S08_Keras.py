@@ -76,3 +76,23 @@ print(model.summary())
 # Play around with number of epochs as well!
 print(model.fit(scaled_X_train,y_train,epochs=150, verbose=2))
 
+# print prediction of model classes (the index positions)
+print(model.predict(scaled_X_test))
+print(model.predict_classes(scaled_X_test))
+
+# evaluate model performance
+# compare predictions against y test
+
+print(model.metrics_names)
+
+print(model.evaluate(x=scaled_X_test,y=y_test))
+
+from sklearn.metrics import confusion_matrix,classification_report
+
+predictions = model.predict_classes(scaled_X_test)
+print(f'predictions: {predictions}')
+
+y_test.argmax(axis=1)
+confusion_matrix(y_test.argmax(axis=1),predictions)
+print(classification_report(y_test.argmax(axis=1),predictions))
+
