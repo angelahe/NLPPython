@@ -35,10 +35,51 @@ print(dtm)
 # LDA
 from sklearn.decomposition import LatentDirichletAllocation
 LDA = LatentDirichletAllocation(n_components=7,random_state=42)
-# This can take awhile, we're dealing with a large amount of documents!
+# This can take awhile, we're dealing with a large number of documents!
 print(LDA.fit(dtm))
 
+# grab the vocabulary of words
 print(len(cv.get_feature_names()))
+# prints 54777
+
+# can get any of the words by using this
+print(cv.get_feature_names()[41000])
+
+single_topic = LDA.components_[0]
+
+print(single_topic.argsort())
+# will print something like array([2475, 18302, ... 22673, 42561], dtype=int64)
+# shows location of larger values
+
+# argsort returns back index positions sorted from least to greatest
+# get top 10 values
+single_topic.argsort()[-10:] # get last 10 values of argsort
+
+top_ten_words = single_topic.argsort()[-10:]
+for index in top_ten_words:
+    print(cv.get_feature_names()[index])
+
+# get the highest probablity words per topic
+for i, topic in enumerate(LDA.componentes_):
+    print(f'the top 15 words for topic #{i}')
+    print([cv.get_feature_names()[index] for index in topic.argsort()[-15]])
+    print('\n')
+
+dtm
+
+topic_results = LDA.transform(dtm)
+print(topic_results[0].round(2))
+
+# get index position of highest probability
+print(topic_results[0].argmax())
+
+# check what is in the article
+print(npr['Article'][0])
+
+import numpy as np
+
+arr = np.array([10, 200, 1])
+print(arr)
 
 import random
 
@@ -77,8 +118,8 @@ for index in top_word_indices:
 
 for index,topic in enumerate(LDA.components_):
     print(f'THE TOP 15 WORDS FOR TOPIC #{index}')
-print([cv.get_feature_names()[i] for i in topic.argsort()[-15:]])
-print('\n')
+    print([cv.get_feature_names()[i] for i in topic.argsort()[-15:]])
+    print('\n')
 
 # attaching topic labels to articles
 print(dtm)
