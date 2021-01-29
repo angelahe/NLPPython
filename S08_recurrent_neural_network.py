@@ -64,3 +64,16 @@ print(' '.join(text_sequences[1]))
 print('show sequence shifted over 2 words')
 print(' '.join(text_sequences[2]))
 
+from keras.preprocessing.text import Tokenizer
+# integer encode sequences of words
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(text_sequences)
+sequences = tokenizer.texts_to_sequences(text_sequences)
+
+print('tokens of sequences first sequence replaced with numbers ie id of a word: {sequences[0]')
+print('mapping of token to word:')
+print(tokenizer.index_word)
+
+print('token mapping to words for first sequence')
+for i in sequences[0]:
+    print(f'{i} : {tokenizer.index_word[i]}')
