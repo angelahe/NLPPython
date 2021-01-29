@@ -96,6 +96,8 @@ y_test.argmax(axis=1)
 confusion_matrix(y_test.argmax(axis=1),predictions)
 print(classification_report(y_test.argmax(axis=1),predictions))
 
+print(accuracy_score(y_test.argmax(axis=1), predictions))
+
 # save and load models
 model.save('myfirstmodel.h5')
 from keras.models import load_model
