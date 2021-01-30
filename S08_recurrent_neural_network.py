@@ -64,6 +64,8 @@ print(' '.join(text_sequences[1]))
 print('show sequence shifted over 2 words')
 print(' '.join(text_sequences[2]))
 
+# Keras tokenization
+
 from keras.preprocessing.text import Tokenizer
 # integer encode sequences of words
 tokenizer = Tokenizer()
@@ -77,3 +79,14 @@ print(tokenizer.index_word)
 print('token mapping to words for first sequence')
 for i in sequences[0]:
     print(f'{i} : {tokenizer.index_word[i]}')
+
+print(f'word count for first 4 chapters: {tokenizer.word_counts}')
+vocabulary_size = len(tokenizer.word_counts)
+
+# convert to numpy matrix
+import numpy as np
+sequences = np.array(sequences)
+# each row represents a single line in the text, all shifted over by one word for the next sequence
+# ie there are as many sequences as there are words in the document
+print(sequences[:5])
+
