@@ -43,6 +43,13 @@ see strftime.org for datetime formats
 ## working with pdfs
 PyPDF2 library
 
+## working with facebook's BaBi dataset
+https://research.fb.com/downloads/babi/
+https://arxiv.org/abs/1502.05698
+
+## end to end memory networks
+https://arxiv.org/pdf/1503.08895.pdf
+
 ## additional reading
 https://spacy.io/api/annotation#pos-tagging
 https://spacy.io/api/annotation#dependency-parsing
