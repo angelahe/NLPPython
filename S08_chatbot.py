@@ -211,3 +211,64 @@ history = model.fit([inputs_train, queries_train], answers_train,batch_size=32,e
 # save the model
 filename = 'chatbot_120_epochs.h5'
 model.save(filename)
+
+# evaluate the model
+import matplotlib.pyplot as plt
+# %matplotlib inline
+print(history.history.keys())
+# summarize history for accuracy
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+
+# evaluate on a given test set
+model.load_weights(filename)
+pred_results = model.predict(([inputs_test, queries_test]))
+
+print(f'first test data: {test_data[0][0]}')
+
+story =' '.join(word for word in test_data[0][0])
+print(story)
+
+query = ' '.join(word for word in test_data[0][1])
+print(query)
+
+print("True Test Answer from Data is:",test_data[0][2])
+
+#Generate prediction from model
+val_max = np.argmax(pred_results[0])
+
+for key, val in tokenizer.word_index.items():
+    if val == val_max:
+        k = key
+
+print("Predicted answer is: ", k)
+print("Probability of certainty was: ", pred_results[0][val_max])
+
+# can write own stories but only if using the vocab of the dataset
+# Note the whitespace of the periods
+my_story = "John left the kitchen . Sandra dropped the football in the garden ."
+my_story.split()
+
+my_question = "Is the football in the garden ?"
+print(my_question.split())
+
+mydata = [(my_story.split(),my_question.split(),'yes')]
+
+my_story,my_ques,my_ans = vectorize_stories(mydata)
+
+pred_results = model.predict(([ my_story, my_ques]))
+
+#Generate prediction from model
+val_max = np.argmax(pred_results[0])
+
+for key, val in tokenizer.word_index.items():
+    if val == val_max:
+        k = key
+
+print("Predicted answer is: ", k)
+print("Probability of certainty was: ", pred_results[0][val_max])
