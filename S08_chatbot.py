@@ -205,3 +205,9 @@ model.compile(optimizer='rmsprop', loss='categorical_crossentropy',
 
 print(model.summary)
 
+# train the model
+history = model.fit([inputs_train, queries_train], answers_train,batch_size=32,epochs=120,validation_data=([inputs_test, queries_test], answers_test))
+
+# save the model
+filename = 'chatbot_120_epochs.h5'
+model.save(filename)
