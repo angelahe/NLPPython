@@ -200,3 +200,12 @@ for i,word in enumerate(full_text.split()):
     if word == 'inkling':
         print(' '.join(full_text.split()[i-20:i+20]))
         print('\n')
+
+# do from a loaded model
+from keras.models import load_model
+model2 = load_model('epochBIG.h5')
+
+tokenizer2 = load(open('epochBIG', 'rb'))
+new_text2 = generate_text(model2, tokenizer2, seq_len, seed_text=seed_text, num_gen_words=25)
+
+print(new_text2)
