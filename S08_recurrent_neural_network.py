@@ -15,6 +15,10 @@
 
 # will use this for LSTM text generation
 
+# note this workaround for an error complaining of multiple copies of libiomp5.dylib being linked
+import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 # process text
 # clean text
 # tokenize text and create sequences with Keras
@@ -90,3 +94,44 @@ sequences = np.array(sequences)
 # ie there are as many sequences as there are words in the document
 print(sequences[:5])
 
+# features labels split
+from keras.utils import to_categorical
+# grab all but last word from each sequence row
+X = sequences[:,:-1]
+# grab last word from each sequence row
+y = sequences[:,-1]
+# change y into a to_categorical
+y = to_categorical(y, num_classes=vocabulary_size+1)
+seq_len = X.shape[1]
+
+# create LSTM based model
+from keras.models import Sequential
+from keras.layers import Dense,LSTM,Embedding
+
+def create_model(vocabulary_size, seq_len):
+    model = Sequential()
+    model.add(Embedding(vocabulary_size, 25, input_length=seq_len))
+    model.add(LSTM(150, return_sequences=True))
+    model.add(LSTM(150))
+    model.add(Dense(150, activation='relu'))
+
+    model.add(Dense(vocabulary_size, activation='softmax'))
+
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+    print(model.summary())
+
+    return model
+
+model = create_model(vocabulary_size+1, seq_len)
+
+# save the model then fit the model for training
+
+from pickle import dump,load
+# fit model
+model.fit(X, y, batch_size=128, epochs=300,verbose=1)
+
+# save the model to file
+model.save('epochBIG.h5')
+# save the tokenizer
+dump(tokenizer, open('epochBIG', 'wb'))
